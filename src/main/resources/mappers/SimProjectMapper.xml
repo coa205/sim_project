@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dgit.persistence.SimProjectDao">
+
+	<select id="selectList" resultType="SimProject">
+		select * from sim_project
+	</select>
+	
+	<select id="selectByNo" resultType="SimProject">
+		select * from sim_project where number = #{number}
+	</select>
+	
+	<select id="selectLastId" resultType="int">
+		select last_insert_id() from sim_project
+	</select>
+	
+	<insert id="insert">
+		insert into sim_project(name, content, start_date, end_date, state) values
+		(#{name},#{content},#{start_date},#{end_date},#{state})
+	</insert>
+	
+	<update id="update">
+		update sim_project 
+		set name = #{name} , content = #{content}, start_date = #{start_date}, end_date = #{end_date}, state = #{state} 
+		where number = #{number}
+	</update>
+	
+	<delete id="delete">
+		delete from sim_project where number = #{number}
+	</delete>
+	
+</mapper>
